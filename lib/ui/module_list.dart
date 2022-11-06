@@ -9,7 +9,7 @@ class ModuleList extends StatelessWidget {
 
   final List<String> _moduleList = const [
     'Modul 1 - Pengenalan Dart',
-    'Modul 2 - Program Dart Pertamamu',
+    'Modul 2 - Memulai Pemrograman dengan Dart',
     'Modul 3 - Dart Fundamental',
     'Modul 4 - Control Flow',
     'Modul 5 - Collections',
@@ -110,6 +110,7 @@ class ModuleTile extends StatelessWidget {
               child: const Icon(Icons.done),
             )
           : ElevatedButton(
+              key: Key(moduleName),
               onPressed: onClick,
               child: const Text('Done'),
             ),
