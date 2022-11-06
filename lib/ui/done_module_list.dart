@@ -13,7 +13,7 @@ class DoneModuleList extends StatelessWidget {
   Widget build(BuildContext context) {
     // Mengambil data tp tidak menggubah tampilan UI
     final doneModuleList =
-        Provider.of<DoneModulProvider>(context, listen: false).doneModuleList;
+        Provider.of<DoneModuleProvider>(context, listen: false).doneModuleList;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Done Module List'),

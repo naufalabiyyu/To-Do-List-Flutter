@@ -25,12 +25,15 @@ class ModuleList extends StatelessWidget {
     return ListView.builder(
       itemCount: _moduleList.length,
       itemBuilder: (context, index) {
-        return Consumer(builder: (context, DoneModulProvider data, widget) {
+        return Consumer(builder: (context, DoneModuleProvider data, widget) {
           return ModuleTile(
             moduleName: _moduleList[index],
             isDone: data.doneModuleList.contains(_moduleList[index]),
             onClick: () {
               data.complete(_moduleList[index]);
+            },
+            onRemove: () {
+              data.remove(_moduleList[index]);
             },
           );
         });
@@ -86,20 +89,26 @@ class ModuleTile extends StatelessWidget {
   final String moduleName;
   final bool isDone;
   final Function() onClick;
+  final Function() onRemove;
 
-  const ModuleTile(
-      {Key? key,
-      required this.moduleName,
-      required this.isDone,
-      required this.onClick})
-      : super(key: key);
+  const ModuleTile({
+    Key? key,
+    required this.moduleName,
+    required this.isDone,
+    required this.onClick,
+    required this.onRemove,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(moduleName),
       trailing: isDone
-          ? const Icon(Icons.done)
+          ? ElevatedButton(
+              onPressed: onRemove,
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+              child: const Icon(Icons.done),
+            )
           : ElevatedButton(
               onPressed: onClick,
               child: const Text('Done'),

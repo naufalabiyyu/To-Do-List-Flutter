@@ -32,7 +32,7 @@ class _ModulePageState extends State<ModulePage> {
             ),
           ],
         ),
-        body: const ModuleList()
+        body: ModuleList()
         // ModuleList(doneModuleList: doneModuleList),
         );
   }
